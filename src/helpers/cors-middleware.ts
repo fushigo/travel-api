@@ -2,7 +2,8 @@ import Cors from "cors";
 
 export const cors: any = Cors({
   methods: ["POST", "GET", "HEAD", "PUT", "DELETE"],
-  origin: "http://localhost:3000",
+  origin: "*",
+  optionsSuccessStatus: 200,
   credentials: true,
 });
 
