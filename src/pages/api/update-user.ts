@@ -1,28 +1,16 @@
 import { cors, middleware } from "@/helpers/middleware";
 import prisma from "../../../prisma/client";
 
-interface UpdateUser {
-  query: {
-    id: number;
-  };
-  body: {
-    nama: string;
-    username: string;
-    email: string;
-    password: string;
-  };
-}
-
 export default async function handler(req: any, res: any) {
   await middleware(req, res, cors);
 
   if (req.method === "PUT") {
-    const { nama, username, email, password } = (req as UpdateUser).body;
-    const { id } = (req as UpdateUser).query;
+    const { nama, username, email, password } = req.body;
+    const { id } = req.query;
     try {
       const updateUser = await prisma.users.update({
         where: {
-          id: id,
+          id: parseInt(id, 10),
         },
         data: {
           nama,
