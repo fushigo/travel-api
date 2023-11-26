@@ -1,5 +1,5 @@
 import { cors, middleware } from "@/helpers/middleware";
-import prisma from "../../../prisma/client";
+import prisma from "../../../../prisma/client";
 
 interface UserRequest {
   body: {

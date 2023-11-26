@@ -1,5 +1,5 @@
 import { cors, middleware } from "@/helpers/middleware";
-import prisma from "../../../prisma/client";
+import prisma from "../../../../prisma/client";
 
 export default async function handler(req: any, res: any) {
   await middleware(req, res, cors);
@@ -10,7 +10,7 @@ export default async function handler(req: any, res: any) {
     try {
       const updateUser = await prisma.users.update({
         where: {
-          id: parseInt(id, 10),
+          id: parseInt(id),
         },
         data: {
           nama,
