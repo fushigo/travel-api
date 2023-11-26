@@ -4,8 +4,8 @@ import prisma from "../../../../prisma/client";
 export default async function handler(req: any, res: any) {
   await middleware(req, res, cors);
 
-  if (req.method === "PUT") {
-    const { nama, username, email, password } = req.body;
+  if (req.method === "PUT" || req.method === "PATCH") {
+    const { nama, username, email, password, role } = req.body;
     const { id } = req.query;
     try {
       const updateUser = await prisma.users.update({
@@ -17,6 +17,7 @@ export default async function handler(req: any, res: any) {
           username,
           email,
           password,
+          role,
         },
       });
       res.status(200).json({ message: "Success update data", updateUser });
