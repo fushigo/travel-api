@@ -12,8 +12,8 @@ datasource db {
 
 model Users {
   id Int @id @default(autoincrement())
-  nama String 
-  username String
+  nama String
+  username String @unique
   email String
   password String
   role Role @default(USER)
@@ -21,7 +21,7 @@ model Users {
   updateAt DateTime @updatedAt
 }
 
-enum Role{
+enum Role {
   USER
   ADMIN
 }

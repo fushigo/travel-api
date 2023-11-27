@@ -1,5 +1,6 @@
-import { cors, middleware } from "@/helpers/middleware";
+import { apiKey, cors, middleware } from "@/helpers/middleware";
 import prisma from "../../../../prisma/client";
+import { Request, Response } from "express";
 
 interface UserRequest {
   body: {
@@ -10,8 +11,10 @@ interface UserRequest {
   };
 }
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: Request, res: Response) {
   await middleware(req, res, cors);
+  apiKey(req, res);
+
   if (req.method === "POST") {
     const { nama, username, email, password } = (req as UserRequest).body;
     try {
@@ -23,11 +26,14 @@ export default async function handler(req: any, res: any) {
           password,
         },
       });
-      res.status(201).json({ message: "success create user", user });
+      res.status(201).json({
+        message: "success",
+        data: user,
+      });
     } catch (e) {
       res.status(500).json(e);
     }
   } else {
-    res.status(405).json({ message: "Access Denied" });
+    res.status(405).json({ message: "Method not allowed" });
   }
 }
