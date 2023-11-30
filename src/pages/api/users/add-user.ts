@@ -2,21 +2,21 @@ import { apiKey, cors, middleware } from "@/helpers/middleware";
 import prisma from "../../../../prisma/client";
 import { Request, Response } from "express";
 
-interface UserRequest {
-  body: {
-    nama: string;
-    username: string;
-    email: string;
-    password: string;
-  };
-}
+// interface UserRequest {
+//   body: {
+//     nama: string;
+//     username: string;
+//     email: string;
+//     password: string;
+//   };
+// }
 
 export default async function handler(req: Request, res: Response) {
   await middleware(req, res, cors);
   apiKey(req, res);
 
   if (req.method === "POST") {
-    const { nama, username, email, password } = (req as UserRequest).body;
+    const { nama, username, email, password } = req.body;
     try {
       const user = await prisma.users.create({
         data: {
