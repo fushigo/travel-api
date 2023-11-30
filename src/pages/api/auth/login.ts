@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 export default async function handler(req: Request, res: Response) {
   await middleware(req, res, cors);
   apiKey(req, res);
-  
+
   if (req.method === "POST") {
     try {
       const { username, password } = req.body;
@@ -25,7 +25,16 @@ export default async function handler(req: Request, res: Response) {
           const token = jwt.sign({ userId }, "travelcoauth", {
             expiresIn: "1h",
           });
-          res.status(200).json({ token });
+          res.status(200).json({
+            message: "Success",
+            data: {
+              nama: response.nama,
+              username: response.username,
+              email: response.email,
+              role: response.role,
+            },
+            token: token,
+          });
         } else {
           res.status(401).json({ message: "Authentication failed" });
         }
