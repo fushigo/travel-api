@@ -10,6 +10,7 @@ export const cors: any = Cors({
   origin: "*",
   optionsSuccessStatus: 200,
   credentials: true,
+  allowedHeaders: "*",
 });
 
 export function middleware(req: any, res: any, fn: any) {
