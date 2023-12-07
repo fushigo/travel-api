@@ -25,3 +25,11 @@ enum Role {
   USER
   ADMIN
 }
+
+model Product {
+  productId Int @id @default(autoincrement())
+  nama String @unique
+  harga Int
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
