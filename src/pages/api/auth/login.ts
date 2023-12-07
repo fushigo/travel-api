@@ -28,6 +28,7 @@ export default async function handler(req: Request, res: Response) {
           res.status(200).json({
             message: "Success",
             data: {
+              id: response.id,
               nama: response.nama,
               username: response.username,
               email: response.email,
