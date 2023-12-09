@@ -23,7 +23,7 @@ export default async function handler(req: Request, res: Response) {
         },
       });
       res.status(200).json({
-        message: "Success",
+        message: "Updated user successfully",
         data: updateUser,
       });
     } catch (error) {

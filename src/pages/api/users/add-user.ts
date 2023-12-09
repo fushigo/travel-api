@@ -26,8 +26,9 @@ export default async function handler(req: Request, res: Response) {
           password,
         },
       });
+
       res.status(201).json({
-        message: "success",
+        message: "User created successfully",
         data: user,
       });
     } catch (e) {

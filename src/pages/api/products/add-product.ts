@@ -16,7 +16,7 @@ export default async function handler(req: Request, res: Response) {
         },
       });
       res.status(201).json({
-        message: "success",
+        message: "Product created successfully",
         data: product,
       });
     } catch (e) {

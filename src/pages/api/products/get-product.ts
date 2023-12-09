@@ -16,7 +16,7 @@ export default async function handler(req: Request, res: Response) {
       const countData = await prisma.product.count();
 
       res.status(200).json({
-        message: "Success",
+        message: "Product found successfully",
         totalData: countData,
         data: list,
       });

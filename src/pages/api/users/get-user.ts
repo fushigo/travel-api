@@ -11,12 +11,15 @@ export default async function handler(req: Request, res: Response) {
     try {
       const list = await prisma.users.findMany({
         skip: skipValue,
+        include: {
+          cart: true,
+        },
       });
 
       const countData = await prisma.users.count();
 
       res.status(200).json({
-        message: "Success",
+        message: "User found successfully",
         totalData: countData,
         data: list,
       });

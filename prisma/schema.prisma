@@ -17,6 +17,7 @@ model Users {
   email String
   password String
   role Role @default(USER)
+  cart Cart[]
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }
@@ -30,6 +31,18 @@ model Product {
   productId Int @id @default(autoincrement())
   nama String @unique
   harga Int
+  cart Cart[]
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Cart {
+  cartId Int @id @default(autoincrement())
+  quantity Int
+  user Users @relation(fields: [userId], references: [id])
+  product Product @relation(fields: [cartProductId], references: [productId])
+  userId Int
+  cartProductId Int @unique
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }
