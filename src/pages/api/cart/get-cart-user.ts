@@ -4,7 +4,6 @@ import prisma from "../../../../prisma/client";
 
 export default async function handler(req: Request, res: Response) {
   middleware(req, res, cors);
-  apiKey(req, res);
 
   const { id } = req.query;
 
