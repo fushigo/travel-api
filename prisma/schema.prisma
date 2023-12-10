@@ -43,7 +43,7 @@ model Cart {
   user Users @relation(fields: [userId], references: [id])
   product Product @relation(fields: [cartProductId], references: [productId])
   userId Int
-  cartProductId Int @unique
+  cartProductId Int
   history History[]
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt

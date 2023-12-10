@@ -12,8 +12,7 @@ export default async function handler(req: Request, res: Response) {
     try {
       const cartUser = await prisma.cart.update({
         where: {
-          userId: Number(id),
-          cartProductId: Number(productId),
+          cartId: Number(id),
         },
         data: {
           quantity: Number(quantity),

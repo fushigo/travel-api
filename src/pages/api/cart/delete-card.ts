@@ -12,8 +12,7 @@ export default async function handler(req: any, res: any) {
     try {
       const deleteCart = await prisma.cart.delete({
         where: {
-          userId: Number(id),
-          cartProductId: Number(productId),
+            cartId: Number(id)
         },
       });
 
