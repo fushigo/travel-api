@@ -13,6 +13,7 @@ export default async function handler(req: Request, res: Response) {
         skip: skipValue,
         include: {
           cart: true,
+          history: true,
         },
       });
 

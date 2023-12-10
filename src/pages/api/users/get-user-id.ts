@@ -12,6 +12,10 @@ export default async function handler(req: Request, res: Response) {
         where: {
           id: Number(id),
         },
+        include: {
+          cart: true,
+          history: true,
+        },
       });
 
       res.status(200).json({

@@ -18,6 +18,7 @@ model Users {
   password String
   role Role @default(USER)
   cart Cart[]
+  history History[]
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }
@@ -43,6 +44,17 @@ model Cart {
   product Product @relation(fields: [cartProductId], references: [productId])
   userId Int
   cartProductId Int @unique
+  history History[]
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model History {
+  historyId Int @id @default(autoincrement())
+  user Users @relation(fields: [userId], references: [id])
+  cart Cart @relation(fields: [cartIdHistory], references: [cartId])
+  userId Int
+  cartIdHistory Int @unique
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }
