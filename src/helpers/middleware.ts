@@ -6,9 +6,8 @@ import next from "next";
 dotenv.config();
 
 export const cors: any = Cors({
-  methods: ["POST", "GET", "PATCH", "HEAD", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PATCH", "HEAD", "PUT", "DELETE"],
   origin: "*",
-  optionsSuccessStatus: 200,
   credentials: true,
   allowedHeaders: "*",
 });
