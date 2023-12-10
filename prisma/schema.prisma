@@ -52,7 +52,7 @@ model Cart {
 model History {
   historyId Int @id @default(autoincrement())
   user Users @relation(fields: [userId], references: [id])
-  cart Cart @relation(fields: [cartIdHistory], references: [cartId])
+  cart Cart @relation(fields: [cartIdHistory], references: [cartId], onDelete: Cascade)
   userId Int
   cartIdHistory Int @unique
   createAt DateTime @default(now())
