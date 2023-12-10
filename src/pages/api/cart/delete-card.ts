@@ -17,7 +17,7 @@ export default async function handler(req: Request, res: Response) {
         },
       });
 
-      res.status(2001).json({
+      res.status(200).json({
         message: "Cart deleted successfully",
         data: deleteCart,
       });
