@@ -14,7 +14,15 @@ export default async function handler(req: any, res: any) {
           id: Number(userId),
         },
         include: {
-          history: true,
+          history: {
+            include: {
+              cart: {
+                include: {
+                  product: true,
+                },
+              },
+            },
+          },
         },
       });
       res.status(200).json({
