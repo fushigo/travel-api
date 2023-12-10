@@ -2,7 +2,7 @@ import { apiKey, cors, middleware } from "@/helpers/middleware";
 import { Request, Response } from "express";
 import prisma from "../../../../prisma/client";
 
-export default async function handler(req: Request, res: Response) {
+export default async function handler(req: any, res: any) {
   middleware(req, res, cors);
   apiKey(req, res);
 
