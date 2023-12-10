@@ -34,7 +34,6 @@ CREATE TABLE `Cart` (
     `createAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updateAt` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `Cart_cartProductId_key`(`cartProductId`),
     PRIMARY KEY (`cartId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -60,4 +59,4 @@ ALTER TABLE `Cart` ADD CONSTRAINT `Cart_cartProductId_fkey` FOREIGN KEY (`cartPr
 ALTER TABLE `History` ADD CONSTRAINT `History_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `Users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `History` ADD CONSTRAINT `History_cartIdHistory_fkey` FOREIGN KEY (`cartIdHistory`) REFERENCES `Cart`(`cartId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `History` ADD CONSTRAINT `History_cartIdHistory_fkey` FOREIGN KEY (`cartIdHistory`) REFERENCES `Cart`(`cartId`) ON DELETE CASCADE ON UPDATE CASCADE;
