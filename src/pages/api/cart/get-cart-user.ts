@@ -6,7 +6,7 @@ export default async function handler(req: Request, res: Response) {
   middleware(req, res, cors);
   apiKey(req, res);
 
-  const { id } = req.body;
+  const { id } = req.query;
 
   if (req.method === "GET") {
     try {
