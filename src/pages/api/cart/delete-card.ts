@@ -6,7 +6,7 @@ export default async function handler(req: Request, res: Response) {
   middleware(req, res, cors);
   apiKey(req, res);
 
-  const { id, productId } = req.body;
+  const { id, productId } = req.query;
 
   if (req.method === "DELETE") {
     try {
