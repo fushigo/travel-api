@@ -40,8 +40,8 @@ model Product {
 model Cart {
   cartId Int @id @default(autoincrement())
   quantity Int
-  user Users @relation(fields: [userId], references: [id])
-  product Product @relation(fields: [cartProductId], references: [productId])
+  user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [cartProductId], references: [productId], onDelete: Cascade)
   userId Int
   cartProductId Int
   history History[]
@@ -51,7 +51,7 @@ model Cart {
 
 model History {
   historyId Int @id @default(autoincrement())
-  user Users @relation(fields: [userId], references: [id])
+  user Users @relation(fields: [userId], references: [id], onDelete: Cascade)
   cart Cart @relation(fields: [cartIdHistory], references: [cartId], onDelete: Cascade)
   userId Int
   cartIdHistory Int @unique
